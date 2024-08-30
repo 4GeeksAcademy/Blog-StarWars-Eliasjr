@@ -1,3 +1,58 @@
 /* 
     General Styles
 */
+/* En tu archivo CSS */
+.navbar {
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.navbar-toggler {
+    border-color: rgba(0, 0, 0, 0.1);
+}
+
+.navbar-brand img {
+    width: 150px;
+}
+
+.dropdown-menu {
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+
+
+
+
+.slider-container {
+    display: flex;
+    align-items: center;
+    position: relative; /* Para posicionar las flechas personalizadas */
+}
+
+.slider-wrapper {
+    flex: 1;
+    overflow: hidden; /* Oculta cualquier contenido fuera del contenedor */
+}
+
+.slick-prev, .slick-next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.5);
+    border: none;
+    color: white;
+    cursor: pointer;
+    z-index: 1;
+}
+
+.slick-prev {
+    left: 0;
+}
+
+.slick-next {
+    right: 0;
+}
+
+.slick-prev:hover, .slick-next:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
