@@ -29,16 +29,17 @@ export const Planet = () => {
             {/* Parte superior con imagen y descripción */}
             <div className="row mb-4">
                 {/* Imagen del planeta */}
-                <div className="col-md-4 d-flex justify-content-center">
+                <div className="col-12 col-md-4 d-flex justify-content-center mb-3 mb-md-0">
                     <img 
                         src="https://via.placeholder.com/150" 
                         alt="Planet" 
                         className="img-fluid rounded" 
+                        style={{ maxWidth: '100%', height: 'auto' }} 
                     /> {/* Reemplaza con una imagen representativa */}
                 </div>
                 {/* Título y descripción del planeta */}
-                <div className="col-md-8">
-                    <h3>{planetDetails.name}</h3>
+                <div className="col-12 col-md-8">
+                    <h3 className="mb-3">{planetDetails.name}</h3>
                     <p>
                         {planetDetails.description || 'No description available'}
                     </p>
@@ -49,33 +50,33 @@ export const Planet = () => {
 
             {/* Detalles del planeta */}
             <div className="row mb-4">
-                <div className="col">
-                    <div className="d-flex justify-content-around flex-wrap">
-                        <div className="d-flex flex-column text-center">
+                <div className="col-12">
+                    <div className="d-flex flex-wrap justify-content-around">
+                        <div className="d-flex flex-column text-center mb-3">
                             <p><strong>Name:</strong></p>
                             <p>{planetDetails.name}</p>
                         </div>
-                        <div className="d-flex flex-column text-center">
+                        <div className="d-flex flex-column text-center mb-3">
                             <p><strong>Climate:</strong></p>
                             <p>{planetDetails.climate}</p>
                         </div>
-                        <div className="d-flex flex-column text-center">
+                        <div className="d-flex flex-column text-center mb-3">
                             <p><strong>Terrain:</strong></p>
                             <p>{planetDetails.terrain}</p>
                         </div>
-                        <div className="d-flex flex-column text-center">
+                        <div className="d-flex flex-column text-center mb-3">
                             <p><strong>Population:</strong></p>
                             <p>{planetDetails.population}</p>
                         </div>
-                        <div className="d-flex flex-column text-center">
+                        <div className="d-flex flex-column text-center mb-3">
                             <p><strong>Orbital Period:</strong></p>
                             <p>{planetDetails.orbital_period}</p>
                         </div>
-                        <div className="d-flex flex-column text-center">
+                        <div className="d-flex flex-column text-center mb-3">
                             <p><strong>Rotation Period:</strong></p>
                             <p>{planetDetails.rotation_period}</p>
                         </div>
-                        <div className="d-flex flex-column text-center">
+                        <div className="d-flex flex-column text-center mb-3">
                             <p><strong>Diameter:</strong></p>
                             <p>{planetDetails.diameter}</p>
                         </div>
@@ -84,8 +85,8 @@ export const Planet = () => {
             </div>
 
             {/* Botón para agregar/eliminar de favoritos y botón de volver */}
-            <div className="d-flex justify-content-between align-items-center">
-                <Link to="/" className="btn btn-primary shadow">Back home</Link>
+            <div className="d-flex flex-column flex-md-row justify-content-between align-items-center">
+                <Link to="/" className="btn btn-primary mb-3 mb-md-0 shadow">Back home</Link>
                 <button 
                     onClick={handleFavoriteToggle} 
                     className={`btn ${isFavorite ? 'btn-danger' : 'btn-outline-danger'} shadow`}

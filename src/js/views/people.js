@@ -30,12 +30,17 @@ export const People = () => {
             {/* Parte superior con imagen y descripción */}
             <div className="row mb-4">
                 {/* Imagen del personaje */}
-                <div className="col-md-4 d-flex justify-content-center">
-                    <img src="https://via.placeholder.com/150" alt="Character" className="img-fluid rounded" />
+                <div className="col-12 col-md-4 d-flex justify-content-center mb-3 mb-md-0">
+                    <img 
+                        src="https://via.placeholder.com/150" 
+                        alt="Character" 
+                        className="img-fluid rounded" 
+                        style={{ maxWidth: '100%', height: 'auto' }} 
+                    />
                 </div>
                 {/* Título y descripción del personaje */}
-                <div className="col-md-8">
-                    <h3>{peopleDetails.name}</h3>
+                <div className="col-12 col-md-8">
+                    <h3 className="mb-3">{peopleDetails.name}</h3>
                     <p>{peopleDetails.description || 'No description available'}</p>
                 </div>
             </div>
@@ -44,29 +49,29 @@ export const People = () => {
 
             {/* Detalles del personaje */}
             <div className="row mb-4">
-                <div className="col">
-                    <div className="d-flex justify-content-around flex-wrap">
-                        <div className="d-flex flex-column text-center">
+                <div className="col-12">
+                    <div className="d-flex flex-wrap justify-content-around">
+                        <div className="d-flex flex-column text-center mb-3">
                             <p><strong>Gender:</strong></p>
                             <p>{peopleDetails.gender}</p>
                         </div>
-                        <div className="d-flex flex-column text-center">
+                        <div className="d-flex flex-column text-center mb-3">
                             <p><strong>Hair Color:</strong></p>
                             <p>{peopleDetails.hair_color}</p>
                         </div>
-                        <div className="d-flex flex-column text-center">
+                        <div className="d-flex flex-column text-center mb-3">
                             <p><strong>Eye Color:</strong></p>
                             <p>{peopleDetails.eye_color}</p>
                         </div>
-                        <div className="d-flex flex-column text-center">
+                        <div className="d-flex flex-column text-center mb-3">
                             <p><strong>Birth Year:</strong></p>
                             <p>{peopleDetails.birth_year}</p>
                         </div>
-                        <div className="d-flex flex-column text-center">
+                        <div className="d-flex flex-column text-center mb-3">
                             <p><strong>Height:</strong></p>
                             <p>{peopleDetails.height}</p>
                         </div>
-                        <div className="d-flex flex-column text-center">
+                        <div className="d-flex flex-column text-center mb-3">
                             <p><strong>Skin Color:</strong></p>
                             <p>{peopleDetails.skin_color}</p>
                         </div>
@@ -75,8 +80,8 @@ export const People = () => {
             </div>
 
             {/* Botón para agregar/eliminar de favoritos y botón de volver */}
-            <div className="d-flex justify-content-between align-items-center">
-                <Link to="/" className="btn btn-primary shadow">Back home</Link>
+            <div className="d-flex flex-column flex-md-row justify-content-between align-items-center">
+                <Link to="/" className="btn btn-primary mb-3 mb-md-0 shadow">Back home</Link>
                 <button 
                     onClick={handleFavoriteToggle} 
                     className={`btn ${isFavorite ? 'btn-danger' : 'btn-outline-danger'} shadow`}

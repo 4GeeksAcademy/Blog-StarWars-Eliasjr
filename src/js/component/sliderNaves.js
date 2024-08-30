@@ -11,10 +11,33 @@ const SliderNaves = ({ naves }) => {
         infinite: true,
         speed: 300,
         slidesToShow: 3,
-        slidesToScroll: 3,
+        slidesToScroll: 1,
         autoplay: true,
         autoplaySpeed: 3000,
-        arrows: false // Desactiva las flechas predeterminadas
+        arrows: false, // Desactiva las flechas predeterminadas
+        responsive: [
+            {
+                breakpoint: 1024, // Pantallas más grandes (tabletas)
+                settings: {
+                    slidesToShow: 2,
+                    slidesToScroll: 1,
+                },
+            },
+            {
+                breakpoint: 768, // Pantallas medianas (móviles en apaisado)
+                settings: {
+                    slidesToShow: 1,
+                    slidesToScroll: 1,
+                },
+            },
+            {
+                breakpoint: 480, // Pantallas más pequeñas (móviles en vertical)
+                settings: {
+                    slidesToShow: 1, // Muestra 1 elemento a la vez en pantallas pequeñas
+                    slidesToScroll: 1,
+                },
+            },
+        ],
     };
 
     return (
@@ -24,7 +47,7 @@ const SliderNaves = ({ naves }) => {
                 className="slick-prev" 
                 onClick={() => sliderRef.current.slickPrev()}
             >
-                <FaChevronLeft size={40} />
+                <FaChevronLeft size={60} />
             </button>
             {/* Contenedor del slider */}
             <div className="slider-wrapper">
@@ -44,7 +67,7 @@ const SliderNaves = ({ naves }) => {
                 className="slick-next" 
                 onClick={() => sliderRef.current.slickNext()}
             >
-                <FaChevronRight size={40} />
+                <FaChevronRight size={60} />
             </button>
         </div>
     );

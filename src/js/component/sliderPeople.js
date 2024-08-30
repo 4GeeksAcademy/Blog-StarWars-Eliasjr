@@ -10,31 +10,31 @@ const SliderPeople = ({ people }) => {
     const settings = {
         dots: true,
         infinite: true,
-        speed: 500,
+        speed: 400,
         slidesToShow: 3, // Muestra 3 elementos a la vez por defecto
-        slidesToScroll: 3, // Desplaza 3 elementos a la vez
+        slidesToScroll: 1, // Desplaza 2 elemento a la vez
         autoplay: true,
-        autoplaySpeed: 3000,
+        autoplaySpeed: 4000,
         arrows: false, // Desactiva las flechas predeterminadas
         responsive: [
             {
                 breakpoint: 1024, // Pantallas más grandes (tabletas)
                 settings: {
-                    slidesToShow: 3,
-                    slidesToScroll: 3,
+                    slidesToShow: 2,
+                    slidesToScroll: 1,
                 },
             },
             {
                 breakpoint: 768, // Pantallas medianas (móviles en apaisado)
                 settings: {
-                    slidesToShow: 2,
-                    slidesToScroll: 2,
+                    slidesToShow: 1,
+                    slidesToScroll: 1,
                 },
             },
             {
                 breakpoint: 480, // Pantallas más pequeñas (móviles en vertical)
                 settings: {
-                    slidesToShow: 1,
+                    slidesToShow: 1, // Muestra 1 elemento a la vez en pantallas pequeñas
                     slidesToScroll: 1,
                 },
             },
@@ -47,7 +47,7 @@ const SliderPeople = ({ people }) => {
                 className="slick-prev" 
                 onClick={() => sliderRef.current.slickPrev()}
             >
-                <FaChevronLeft size={30} />
+                <FaChevronLeft size={60} />
             </button>
             <div className="slider-wrapper">
                 <Slider {...settings} ref={sliderRef}>
@@ -55,7 +55,10 @@ const SliderPeople = ({ people }) => {
                         <div key={index}>
                             <CardPeople 
                                 name={person.name} 
-                                uid={person.uid} // Asegúrate de que `url` existe en `person` o ajusta el nombre según tu modelo de datos
+                                uid={person.uid}
+                                gender={person.gender}
+                                hair_color={person.hair_color}
+                                eye_color={person.eye_color}
                             />
                         </div>
                     ))}
@@ -65,7 +68,7 @@ const SliderPeople = ({ people }) => {
                 className="slick-next" 
                 onClick={() => sliderRef.current.slickNext()}
             >
-                <FaChevronRight size={30} />
+                <FaChevronRight size={60} />
             </button>
         </div>
     );

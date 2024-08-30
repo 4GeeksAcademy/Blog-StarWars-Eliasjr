@@ -29,17 +29,20 @@ export const Nave = () => {
             {/* Parte superior con imagen y descripción */}
             <div className="row mb-4">
                 {/* Imagen de la nave */}
-                <div className="col-md-4 d-flex justify-content-center">
+                <div className="col-12 col-md-4 d-flex justify-content-center mb-3 mb-md-0">
                     <img 
                         src="https://via.placeholder.com/150" 
                         alt="Starship" 
                         className="img-fluid rounded" 
-                    /> {/* Reemplaza con una imagen representativa */}
+                        style={{ maxWidth: '100%', height: 'auto' }} 
+                    />
                 </div>
                 {/* Título y descripción de la nave */}
-                <div className="col-md-8">
-                    <h3>{naveDetails.name}</h3>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum consectetur ligula nec orci elementum, sed dignissim dolor malesuada. Sed eget mauris auctor, scelerisque orci in, scelerisque nunc. Integer vulputate arcu at lectus fermentum, a ullamcorper ante eleifend. Fusce vel urna sit amet tortor volutpat aliquet. Morbi sagittis, lorem id iaculis feugiat, neque mi commodo eros, in sodales justo dui non eros. Aenean vitae diam et libero sollicitudin gravida. Cras sed sapien non justo fermentum gravida. Donec auctor tortor sit amet erat interdum, eu lacinia nulla facilisis. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Duis ut diam nec nunc scelerisque cursus. Nulla facilisi.</p>
+                <div className="col-12 col-md-8">
+                    <h3 className="mb-3">{naveDetails.name}</h3>
+                    <p>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum consectetur ligula nec orci elementum, sed dignissim dolor malesuada. Sed eget mauris auctor, scelerisque orci in, scelerisque nunc. Integer vulputate arcu at lectus fermentum, a ullamcorper ante eleifend. Fusce vel urna sit amet tortor volutpat aliquet. Morbi sagittis, lorem id iaculis feugiat, neque mi commodo eros, in sodales justo dui non eros. Aenean vitae diam et libero sollicitudin gravida. Cras sed sapien non justo fermentum gravida. Donec auctor tortor sit amet erat interdum, eu lacinia nulla facilisis. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Duis ut diam nec nunc scelerisque cursus. Nulla facilisi.
+                    </p>
                 </div>
             </div>
 
@@ -48,29 +51,29 @@ export const Nave = () => {
 
             {/* Detalles debajo del HR */}
             <div className="row mb-4">
-                <div className="col">
-                    <div className="d-flex justify-content-around flex-wrap">
-                        <div className="d-flex flex-column text-center mx-3">
+                <div className="col-12">
+                    <div className="d-flex flex-wrap justify-content-around">
+                        <div className="d-flex flex-column text-center mb-3 mx-3">
                             <p><strong>Starship class:</strong></p>
                             <p>{naveDetails.starship_class}</p>
                         </div>
-                        <div className="d-flex flex-column text-center mx-3">
+                        <div className="d-flex flex-column text-center mb-3 mx-3">
                             <p><strong>Model:</strong></p>
                             <p>{naveDetails.model}</p>
                         </div>
-                        <div className="d-flex flex-column text-center mx-3">
+                        <div className="d-flex flex-column text-center mb-3 mx-3">
                             <p><strong>Manufacturer:</strong></p>
                             <p>{naveDetails.manufacturer}</p>
                         </div>
-                        <div className="d-flex flex-column text-center mx-3">
+                        <div className="d-flex flex-column text-center mb-3 mx-3">
                             <p><strong>Passengers:</strong></p>
                             <p>{naveDetails.passengers}</p>
                         </div>
-                        <div className="d-flex flex-column text-center mx-3">
+                        <div className="d-flex flex-column text-center mb-3 mx-3">
                             <p><strong>Max atmosphering speed:</strong></p>
                             <p>{naveDetails.max_atmosphering_speed}</p>
                         </div>
-                        <div className="d-flex flex-column text-center mx-3">
+                        <div className="d-flex flex-column text-center mb-3 mx-3">
                             <p><strong>Cost in credits:</strong></p>
                             <p>{naveDetails.cost_in_credits}</p>
                         </div>
@@ -79,8 +82,8 @@ export const Nave = () => {
             </div>
 
             {/* Botones de acción */}
-            <div className="d-flex justify-content-between align-items-center">
-                <Link to="/" className="btn btn-primary shadow">Back home</Link>
+            <div className="d-flex flex-column flex-md-row justify-content-between align-items-center">
+                <Link to="/" className="btn btn-primary mb-3 mb-md-0 shadow">Back home</Link>
                 <button 
                     onClick={handleFavoriteToggle} 
                     className={`btn ${isFavorite ? 'btn-danger' : 'btn-outline-danger'} shadow`}

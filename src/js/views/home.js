@@ -1,8 +1,6 @@
 import React, { useEffect, useContext } from "react";
 import { Context } from "../store/appContext";
 import "../../styles/home.css";
-import { CardPlanet } from "../component/cardPlanetas";
-import { CardPeople } from "../component/cardPeople";
 import SliderNaves from "../component/sliderNaves";
 import SliderPlanetas from "../component/sliderPlanet";
 import SliderPeople from "../component/sliderPeople";
@@ -17,19 +15,27 @@ export const Home = () => {
     }, [actions]);
 
     return (
-        <div className="container justify-content-center text-center mt-5">
-            <h1 className="d-flex justify-content-start text-danger">Characters</h1>
+        <div className="container text-center mt-5">
+            {/* Título para el carrusel de personajes */}
+            <h1 className="text-start text-danger mb-4">
+                <strong>Characters</strong>
+            </h1>
+            {/* Carrusel de personajes */}
             <SliderPeople people={store.peopleFlux} />
 
-			<h1 className="d-flex justify-content-start text-danger">Planets</h1>
-			<SliderPlanetas planetas={store.planetFlux} />
+            {/* Título para el carrusel de planetas */}
+            <h1 className="text-start text-danger mt-5 mb-4">
+                <strong>Planets</strong>
+            </h1>
+            {/* Carrusel de planetas */}
+            <SliderPlanetas planetas={store.planetFlux} />
 
-            <h1 className="d-flex justify-content-start text-danger">Starships</h1>
+            {/* Título para el carrusel de naves */}
+            <h1 className="text-start text-danger mt-5 mb-4">
+                <strong>Starships</strong>
+            </h1>
+            {/* Carrusel de naves */}
             <SliderNaves naves={store.navesFlux} />
         </div>
     );
 };
-
-
-
-

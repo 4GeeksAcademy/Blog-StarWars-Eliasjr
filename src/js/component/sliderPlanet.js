@@ -9,12 +9,35 @@ const SliderPlanetas = ({ planetas }) => {
     const settings = {
         dots: true,
         infinite: true,
-        speed: 300,
+        speed: 500,
         slidesToShow: 3,
-        slidesToScroll: 3,
+        slidesToScroll: 1,
         autoplay: true,
-        autoplaySpeed: 3000,
-        arrows: false // Desactiva las flechas predeterminadas
+        autoplaySpeed: 5000,
+        arrows: false, // Desactiva las flechas predeterminadas
+        responsive: [
+            {
+                breakpoint: 1024, // Pantallas más grandes (tabletas)
+                settings: {
+                    slidesToShow: 2,
+                    slidesToScroll: 1,
+                },
+            },
+            {
+                breakpoint: 768, // Pantallas medianas (móviles en apaisado)
+                settings: {
+                    slidesToShow: 1,
+                    slidesToScroll: 1,
+                },
+            },
+            {
+                breakpoint: 480, // Pantallas más pequeñas (móviles en vertical)
+                settings: {
+                    slidesToShow: 1, // Muestra 1 elemento a la vez en pantallas pequeñas
+                    slidesToScroll: 1,
+                },
+            },
+        ],
     };
 
     return (
@@ -23,7 +46,7 @@ const SliderPlanetas = ({ planetas }) => {
                 className="slick-prev" 
                 onClick={() => sliderRef.current.slickPrev()}
             >
-                <FaChevronLeft size={30} />
+                <FaChevronLeft size={60} />
             </button>
             <div className="slider-wrapper">
                 <Slider {...settings} ref={sliderRef}>
@@ -42,7 +65,7 @@ const SliderPlanetas = ({ planetas }) => {
                 className="slick-next" 
                 onClick={() => sliderRef.current.slickNext()}
             >
-                <FaChevronRight size={30} />
+                <FaChevronRight size={60} />
             </button>
         </div>
     );

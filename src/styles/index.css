@@ -2,23 +2,50 @@
     General Styles
 */
 /* En tu archivo CSS */
+@import url('https://fonts.googleapis.com/css2?family=Bungee+Hairline&family=Orbitron&display=swap');
+
+*{
+    font-family: "Orbitron", sans-serif;
+
+}
+
 .navbar {
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 .navbar-toggler {
-    border-color: rgba(0, 0, 0, 0.1);
+    border-color: rgba(255, 0, 0, 0.1);
 }
 
 .navbar-brand img {
     width: 150px;
 }
 
+
+/* Asegura que el dropdown siempre se muestre */
 .dropdown-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    z-index: 1000;
+    display: block;
+    width: 100%;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
+/* Opcional: estiliza el botón del menú */
+.dropdown-toggle {
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 0.25rem;
+}
 
+/* Opcional: estiliza los elementos del dropdown */
+.dropdown-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
 
 
 
@@ -37,22 +64,11 @@
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    background-color: rgba(0, 0, 0, 0.5);
+
     border: none;
-    color: white;
+    color: rgb(0, 0, 0);
     cursor: pointer;
     z-index: 1;
 }
 
-.slick-prev {
-    left: 0;
-}
-
-.slick-next {
-    right: 0;
-}
-
-.slick-prev:hover, .slick-next:hover {
-    background-color: rgba(0, 0, 0, 0.8);
-}
 
