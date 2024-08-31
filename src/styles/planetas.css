@@ -1,0 +1,38 @@
+.tarjetas-scroll {
+    display: flex;
+    overflow-x: auto;
+    white-space: nowrap;
+    padding: 10px 0;
+}
+
+/* Estilo básico para el botón de like */
+.like-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.3s ease, color 0.3s ease; /* Transición suave para el color y escala */
+    font-size: 24px; /* Tamaño del ícono */
+}
+
+.like-icon {
+    width: 24px;
+    height: 24px;
+}
+
+/* Efecto de escala para el ícono de like */
+.like-button:hover .like-icon {
+    transform: scale(1.2); /* Aumentar el tamaño al pasar el cursor */
+}
+
+/* Color y transición */
+.text-red-500 {
+    color: #f87171; /* Rojo claro */
+}
+
+.text-gray-400 {
+    color: #d1d5db; /* Gris claro */
+}

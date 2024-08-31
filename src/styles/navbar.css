@@ -1,0 +1,61 @@
+/* Estilo para el Navbar */
+.navbar {
+    background: linear-gradient(135deg, #ffffff, #57636e); /* Gradiente oscuro para un look moderno */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra sutil para profundidad */
+    border-radius: 8px; /* Bordes redondeados */
+    padding: 0.5rem 1rem; /* Espaciado */
+}
+
+/* Estilo para la imagen del logo */
+.navbar-brand img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* Estilo para el menú desplegable */
+.dropdown-button {
+    display: flex;
+    align-items: center;
+    color: #ffffff; /* Color del texto */
+    font-weight: bold; /* Negrita para el texto */
+    transition: color 0.3s ease, transform 0.3s ease; /* Transición suave */
+    cursor: pointer; /* Manito al pasar el ratón */
+}
+
+.dropdown-button:hover {
+    color: #f8f9fa; /* Color del texto al pasar el ratón */
+}
+
+/* Estilo para el menú desplegable */
+.dropdown-menu {
+    position: absolute;
+    top: 100%; /* Posiciona el menú justo debajo del botón */
+    left: 0;
+    background-color: #343a40; /* Fondo oscuro */
+    border: none; /* Sin borde */
+    border-radius: 8px; /* Bordes redondeados */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Sombra para profundidad */
+    opacity: 0;
+    visibility: hidden;
+    transform: scaleY(0);
+    transform-origin: top;
+    transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease;
+    z-index: 1000; /* Asegura que el menú esté sobre otros elementos */
+}
+
+/* Mostrar el menú desplegable con transición */
+.dropdown-menu.show {
+    opacity: 1;
+    visibility: visible;
+    transform: scaleY(1); /* Expande el menú verticalmente */
+}
+
+/* Estilo para los ítems del menú desplegable */
+.dropdown-item {
+    color: #f8f9fa; /* Color del texto */
+    transition: background-color 0.3s ease; /* Transición suave del fondo */
+}
+
+.dropdown-item:hover {
+    background-color: #495057; /* Fondo al pasar el ratón */
+}

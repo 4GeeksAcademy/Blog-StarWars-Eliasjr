@@ -1,78 +1,52 @@
 const getState = ({ getStore, getActions, setStore }) => {
     return {
         store: {
-            demo: [
-                {
-                    title: "FIRST",
-                    background: "white",
-                    initial: "white"
-                },
-                {
-                    title: "SECOND",
-                    background: "white",
-                    initial: "white"
-                }
-            ],
-            navesFlux: [],
-            planetFlux: [],
-            peopleFlux: [],
-            favoriteItems: [], // Lista de favoritos
+            naves: [],
+            planetas: [],
+            personajes: [],
+            favorites: [], // Agregar una lista de favoritos
+            isDropdownOpen: false // Estado para controlar la apertura del dropdown
         },
         actions: {
-            addFavorite: (item) => {
+            planetas: () => {
+                fetch('https://www.swapi.tech/api/planets')
+                    .then((response) => response.json())
+                    .then((data) => setStore({ planetas: data.results }))
+                    .catch(error => console.error('Error fetching planets:', error));
+            },
+
+            naves: () => {
+                fetch('https://www.swapi.tech/api/starships')
+                    .then((response) => response.json())
+                    .then((data) => setStore({ naves: data.results }))
+                    .catch(error => console.error('Error fetching starships:', error));
+            },
+
+            personajes: () => {
+                fetch('https://www.swapi.tech/api/people')
+                    .then((response) => response.json())
+                    .then((data) => setStore({ personajes: data.results }))
+                    .catch(error => console.error('Error fetching characters:', error));
+            },
+
+            toggleFavorite: (personaje) => {
                 const store = getStore();
-                // Verifica si el item ya está en la lista de favoritos
-                if (!store.favoriteItems.find(fav => fav.id === item.id)) {
-                    setStore({ favoriteItems: [...store.favoriteItems, item] });
+                const favorites = store.favorites;
+                const isFavorite = favorites.some(fav => fav.uid === personaje.uid);
+
+                if (isFavorite) {
+                    // Remover del favorito
+                    setStore({ favorites: favorites.filter(fav => fav.uid !== personaje.uid) });
+                } else {
+                    // Agregar a favoritos
+                    setStore({ favorites: [...favorites, personaje] });
                 }
             },
-            removeFavorite: (id) => {
+
+            toggleDropdown: () => {
                 const store = getStore();
-                setStore({
-                    favoriteItems: store.favoriteItems.filter(item => item.id !== id)
-                });
+                setStore({ isDropdownOpen: !store.isDropdownOpen });
             },
-            People: () => {
-                fetch('https://swapi.dev/api/people/')
-                    .then(response => {
-                        if (!response.ok) {
-                            throw new Error(`Network response was not ok ${response.statusText}`);
-                        }
-                        return response.json();
-                    })
-                    .then(data => setStore({ peopleFlux: data.results }))
-                    .catch(error => console.error('Error fetching people data:', error));
-            },
-            Starships: () => {
-                fetch('https://www.swapi.tech/api/starships')
-                    .then(response => {
-                        if (!response.ok) {
-                            throw new Error(`Network response was not ok ${response.statusText}`);
-                        }
-                        return response.json();
-                    })
-                    .then(data => setStore({ navesFlux: data.results }))
-                    .catch(error => console.error('Error fetching starships data:', error));
-            },
-            Planets: () => {
-                fetch('https://www.swapi.tech/api/planets')
-                    .then(response => {
-                        if (!response.ok) {
-                            throw new Error(`Network response was not ok ${response.statusText}`);
-                        }
-                        return response.json();
-                    })
-                    .then(data => setStore({ planetFlux: data.results }))
-                    .catch(error => console.error('Error fetching planets data:', error));
-            },
-            changeColor: (index, color) => {
-                const store = getStore();
-                const demo = store.demo.map((elm, i) => {
-                    if (i === index) elm.background = color;
-                    return elm;
-                });
-                setStore({ demo: demo });
-            }
         }
     };
 };

@@ -1,41 +1,52 @@
-import React, { useEffect, useContext } from "react";
+import React, { useContext } from "react";
+import { Naves } from "./naves";
+import { Personajes } from "./personajes";
+import { Container, Row, Col } from 'react-bootstrap';
+import { Planetas } from "./planetas";
 import { Context } from "../store/appContext";
-import "../../styles/home.css";
-import SliderNaves from "../component/sliderNaves";
-import SliderPlanetas from "../component/sliderPlanet";
-import SliderPeople from "../component/sliderPeople";
+import '../../styles/home.css'
 
 export const Home = () => {
     const { store, actions } = useContext(Context);
 
-    useEffect(() => {
-        actions.Starships();
-        actions.Planets();
-        actions.People();
-    }, [actions]);
-
     return (
-        <div className="container text-center mt-5">
-            {/* Título para el carrusel de personajes */}
-            <h1 className="text-start text-danger mb-4">
-                <strong>Characters</strong>
-            </h1>
-            {/* Carrusel de personajes */}
-            <SliderPeople people={store.peopleFlux} />
+        <Container fluid className="home-container">
+            <Row className="justify-content-center text-center mb-4">
+                <Col xs={12} className="text-center">
+                    <h1>Personajes</h1>
+                </Col>
+            </Row>
 
-            {/* Título para el carrusel de planetas */}
-            <h1 className="text-start text-danger mt-5 mb-4">
-                <strong>Planets</strong>
-            </h1>
-            {/* Carrusel de planetas */}
-            <SliderPlanetas planetas={store.planetFlux} />
+            <Row className="justify-content-center mb-4">
+                <Col xs={12} md={10} lg={8}>
+                    <Personajes />
+                </Col>
+            </Row>
 
-            {/* Título para el carrusel de naves */}
-            <h1 className="text-start text-danger mt-5 mb-4">
-                <strong>Starships</strong>
-            </h1>
-            {/* Carrusel de naves */}
-            <SliderNaves naves={store.navesFlux} />
-        </div>
+            <Row className="justify-content-center text-center mb-4">
+                <Col xs={12} className="text-center">
+                    <h1>Planetas</h1>
+                </Col>
+            </Row>
+
+            <Row className="justify-content-center mb-4">
+                <Col xs={12} md={10} lg={8}>
+                    <Planetas />
+                </Col>
+            </Row>
+
+            <Row className="justify-content-center text-center mb-4">
+                <Col xs={12} className="text-center">
+                    <h1>Starships</h1>
+                </Col>
+            </Row>
+
+            <Row className="justify-content-center mb-4">
+                <Col xs={12} md={10} lg={8}>
+                    <Naves />
+                </Col>
+            </Row>
+
+        </Container>
     );
 };

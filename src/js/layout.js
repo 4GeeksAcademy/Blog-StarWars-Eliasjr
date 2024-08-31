@@ -1,41 +1,33 @@
 import React from "react";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
 import ScrollToTop from "./component/scrollToTop";
-import injectContext from "./store/appContext";
-
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { Home } from "./views/home";
-import { Demo } from "./views/demo";
-import { Single } from "./views/single";
+import { Nave } from "./views/nave";
+import { Personajes } from "./views/personajes";
+import { Planeta } from "./views/planeta";
+import injectContext from "./store/appContext";
 import { Navbar } from "./component/navbar";
 import { Footer } from "./component/footer";
-import { Nave } from "./views/nave";
-import { Planet } from "./views/planet";
-import { People } from "./views/people";
 
-//create your first component
 const Layout = () => {
-    //the basename is used when your project is published in a subdirectory and not in the root of the domain
-    // you can set the basename on the .env file located at the root of this project, E.g: BASENAME=/react-hello-webapp/
     const basename = process.env.BASENAME || "";
 
     return (
-        <BrowserRouter basename={basename}>
-            <ScrollToTop>
-                <Navbar />
-                <main>
+        <div>
+            <BrowserRouter basename={basename}>
+                <ScrollToTop>
+                    <Navbar />
                     <Routes>
                         <Route path="/" element={<Home />} />
-                        <Route path="/demo" element={<Demo />} />
-                        <Route path="/nave/:nave_id" element={<Nave />} />
-                        <Route path="/planet/:planet_id" element={<Planet />} />
-                        <Route path="/people/:people_id" element={<People />} />
-                        <Route path="/single/:theid" element={<Single />} />
+                        <Route path="/nave/:uid" element={<Nave />} />
+                        <Route path="/personaje/:uid" element={<Personajes />} />
+                        <Route path="/planeta/:uid" element={<Planeta />} /> 
                         <Route path="*" element={<h1>Not found!</h1>} />
                     </Routes>
-                </main>
-                <Footer />
-            </ScrollToTop>
-        </BrowserRouter>
+                    <Footer />
+                </ScrollToTop>
+            </BrowserRouter>
+        </div>
     );
 };
 

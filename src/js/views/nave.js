@@ -1,100 +1,81 @@
 import React, { useState, useEffect, useContext } from "react";
-import PropTypes from "prop-types";
 import { Link, useParams } from "react-router-dom";
 import { Context } from "../store/appContext";
+import Table from 'react-bootstrap/Table';
+import { Container, Row, Col, Card } from 'react-bootstrap';
 
 export const Nave = () => {
-    const { store, actions } = useContext(Context);
-    const [naveDetails, setNaveDetails] = useState({});
-    const params = useParams();
-    const isFavorite = store.favoriteItems.some(item => item.id === params.nave_id);
+	const { store } = useContext(Context);
+	const [naves, setNaves] = useState({});
+	const params = useParams();
 
-    useEffect(() => {
-        fetch('https://www.swapi.tech/api/starships/' + params.nave_id)
-            .then(response => response.json())
-            .then(data => setNaveDetails(data.result.properties))
-            .catch(error => console.error('Error fetching starship details:', error));
-    }, [params.nave_id]);
+	const headers = ["Nombre", "Modelo", "Clase", "Pasajeros", "Tripulación", "Máxima velocidad"];
+	const keys = ["name", "model", "starship_class", "passengers", "crew", "max_atmosphering_speed"];
 
-    const handleFavoriteToggle = () => {
-        if (isFavorite) {
-            actions.removeFavorite(params.nave_id);
-        } else {
-            actions.addFavorite({ id: params.nave_id, name: naveDetails.name });
-        }
-    };
+	useEffect(() => {
+		fetch(`https://www.swapi.tech/api/starships/${params.uid}`)
+			.then((response) => response.json())
+			.then((data) => setNaves(data.result.properties))
+			.catch((error) => console.error(error));
+	}, [params.uid]);
 
-    return (
-        <div className="container mt-4">
-            {/* Parte superior con imagen y descripción */}
-            <div className="row mb-4">
-                {/* Imagen de la nave */}
-                <div className="col-12 col-md-4 d-flex justify-content-center mb-3 mb-md-0">
-                    <img 
-                        src="https://via.placeholder.com/150" 
-                        alt="Starship" 
-                        className="img-fluid rounded" 
-                        style={{ maxWidth: '100%', height: 'auto' }} 
-                    />
-                </div>
-                {/* Título y descripción de la nave */}
-                <div className="col-12 col-md-8">
-                    <h3 className="mb-3">{naveDetails.name}</h3>
-                    <p>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum consectetur ligula nec orci elementum, sed dignissim dolor malesuada. Sed eget mauris auctor, scelerisque orci in, scelerisque nunc. Integer vulputate arcu at lectus fermentum, a ullamcorper ante eleifend. Fusce vel urna sit amet tortor volutpat aliquet. Morbi sagittis, lorem id iaculis feugiat, neque mi commodo eros, in sodales justo dui non eros. Aenean vitae diam et libero sollicitudin gravida. Cras sed sapien non justo fermentum gravida. Donec auctor tortor sit amet erat interdum, eu lacinia nulla facilisis. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Duis ut diam nec nunc scelerisque cursus. Nulla facilisi.
-                    </p>
-                </div>
-            </div>
+	return (
+		<Container fluid>
+			<Row className="justify-content-center mb-4 shado">
+				<Col xs={12} md={10} lg={8}>
+					{/* Nuevo contenedor para imagen y detalles */}
+					<Card className="mb-4">
+						<Row className="g-0">
+							<Col md={6}>
+								<Card.Img
+									variant="top"
+									src="https://via.placeholder.com/800x400"
+									alt="Nave"
+								/>
+							</Col>
+							<Col md={6}>
+								<Card.Body>
+									<Card.Title className="display-4">{naves.name}</Card.Title>
+									<Card.Text>
+										{naves.description || "Descripción no disponible."}
+									</Card.Text>
+								</Card.Body>
+							</Col>
+						</Row>
+					</Card>
 
-            {/* Línea horizontal */}
-            <hr className="my-4" style={{ borderColor: 'red', borderWidth: '2px' }} />
+					<hr className="my-4" />
+					
+					<h1 className="display-4 text-center mb-5">Detalles: {naves.name}</h1>
 
-            {/* Detalles debajo del HR */}
-            <div className="row mb-4">
-                <div className="col-12">
-                    <div className="d-flex flex-wrap justify-content-around">
-                        <div className="d-flex flex-column text-center mb-3 mx-3">
-                            <p><strong>Starship class:</strong></p>
-                            <p>{naveDetails.starship_class}</p>
-                        </div>
-                        <div className="d-flex flex-column text-center mb-3 mx-3">
-                            <p><strong>Model:</strong></p>
-                            <p>{naveDetails.model}</p>
-                        </div>
-                        <div className="d-flex flex-column text-center mb-3 mx-3">
-                            <p><strong>Manufacturer:</strong></p>
-                            <p>{naveDetails.manufacturer}</p>
-                        </div>
-                        <div className="d-flex flex-column text-center mb-3 mx-3">
-                            <p><strong>Passengers:</strong></p>
-                            <p>{naveDetails.passengers}</p>
-                        </div>
-                        <div className="d-flex flex-column text-center mb-3 mx-3">
-                            <p><strong>Max atmosphering speed:</strong></p>
-                            <p>{naveDetails.max_atmosphering_speed}</p>
-                        </div>
-                        <div className="d-flex flex-column text-center mb-3 mx-3">
-                            <p><strong>Cost in credits:</strong></p>
-                            <p>{naveDetails.cost_in_credits}</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
+					<div className="table-responsive">
+						<Table striped bordered hover>
+							<thead>
+								<tr>
+									{headers.map((header, index) => (
+										<th key={index}>{header}</th>
+									))}
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									{keys.map((key, index) => (
+										<td key={index}>{naves[key]}</td>
+									))}
+								</tr>
+							</tbody>
+						</Table>
+					</div>
 
-            {/* Botones de acción */}
-            <div className="d-flex flex-column flex-md-row justify-content-between align-items-center">
-                <Link to="/" className="btn btn-primary mb-3 mb-md-0 shadow">Back home</Link>
-                <button 
-                    onClick={handleFavoriteToggle} 
-                    className={`btn ${isFavorite ? 'btn-danger' : 'btn-outline-danger'} shadow`}
-                >
-                    {isFavorite ? 'Remove from Favorites' : 'Add to Favorites'}
-                </button>
-            </div>
-        </div>
-    );
-};
-
-Nave.propTypes = {
-    match: PropTypes.object,
+					<div className="text-center mt-4">
+						<Link to="/">
+							<span className="btn btn-primary btn-lg" role="button">
+								Back home
+							</span>
+						</Link>
+					</div>
+				</Col>
+			</Row>
+		</Container>
+	);
 };

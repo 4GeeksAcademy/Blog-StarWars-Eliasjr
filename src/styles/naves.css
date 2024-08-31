@@ -1,0 +1,26 @@
+.tarjetas-scroll {
+    display: flex;
+    overflow-x: auto;
+    white-space: nowrap;
+    padding: 10px 0;
+}
+
+.tarjetas-scroll > .card {
+    flex: 0 0 auto; /* Evita que las tarjetas se reduzcan más allá de su tamaño natural */
+    margin-right: 10px; /* Espacio entre tarjetas */
+}
+
+.tarjetas-scroll::-webkit-scrollbar {
+    height: 8px;
+}
+
+.tarjetas-scroll::-webkit-scrollbar-thumb {
+    background-color: #888;
+    border-radius: 4px;
+}
+
+.tarjetas-scroll::-webkit-scrollbar-thumb:hover {
+    background-color: #555;
+}
+
+
