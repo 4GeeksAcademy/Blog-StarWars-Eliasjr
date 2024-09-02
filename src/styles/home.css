@@ -1,5 +1,5 @@
 .home-container {
-    padding: 0 15px; /* Espaciado horizontal adicional en el contenedor principal */
+    padding: 0 15px; 
 }
 
 .home-container .row {
@@ -16,11 +16,10 @@
     text-align: center;
 }
 
-/* Asegúrate de que el contenedor de tarjetas tenga suficiente margen */
 .tarjetas {
     margin: 0 auto;
     padding: 20px 0;
-    overflow: hidden; /* Opcional, asegura que el contenido no se desborde */
+    overflow: hidden; 
 }
 
 .tarjetas-scroll {
@@ -31,8 +30,8 @@
 }
 
 .tarjetas-scroll > .card {
-    flex: 0 0 auto; /* Evita que las tarjetas se reduzcan más allá de su tamaño natural */
-    margin-right: 10px; /* Espacio entre tarjetas */
+    flex: 0 0 auto;
+    margin-right: 10px; 
 }
 
 .tarjetas-scroll::-webkit-scrollbar {
@@ -48,7 +47,6 @@
     background-color: #555;
 }
 
-/* home.css */
 .text-left-custom {
     text-align: left;
 }

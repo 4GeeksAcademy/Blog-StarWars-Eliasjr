@@ -1,4 +1,3 @@
-/* Estilo para el contenedor de tarjetas con desplazamiento horizontal */
 .tarjetas-scroll {
     display: flex;
     overflow-x: auto;
@@ -7,11 +6,10 @@
 }
 
 .tarjetas-scroll .card {
-    flex: 0 0 auto; /* Evita que las tarjetas se reduzcan más allá de su tamaño natural */
-    margin-right: 10px; /* Espacio entre tarjetas */
+    flex: 0 0 auto;
+    margin-right: 10px;
 }
 
-/* Estilos opcionales para mejorar la apariencia del scrollbar */
 .tarjetas-scroll::-webkit-scrollbar {
     height: 8px;
 }
@@ -25,7 +23,6 @@
     background-color: #555;
 }
 
-/* Estilo básico para el botón de like */
 .like-button {
     background: none;
     border: none;
@@ -34,8 +31,8 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    transition: transform 0.3s ease, color 0.3s ease; /* Transición suave para el color y escala */
-    font-size: 24px; /* Tamaño del ícono */
+    transition: transform 0.3s ease, color 0.3s ease; 
+    font-size: 24px; 
 }
 
 .like-icon {
@@ -43,16 +40,23 @@
     height: 24px;
 }
 
-/* Efecto de escala para el ícono de like */
 .like-button:hover .like-icon {
-    transform: scale(1.2); /* Aumentar el tamaño al pasar el cursor */
+    transform: scale(1.2); 
 }
 
-/* Color y transición */
 .text-red-500 {
-    color: #f87171; /* Rojo claro */
+    color: #f87171; 
 }
 
 .text-gray-400 {
-    color: #d1d5db; /* Gris claro */
+    color: #d1d5db; 
+}
+
+.responsive-img {
+    width: 100%;
+    height: auto;
+    max-width: 450px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
 }

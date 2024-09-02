@@ -4,42 +4,40 @@ const getState = ({ getStore, getActions, setStore }) => {
             naves: [],
             planetas: [],
             personajes: [],
-            favorites: [], // Agregar una lista de favoritos
-            isDropdownOpen: false // Estado para controlar la apertura del dropdown
+            favorites: [], 
+            isDropdownOpen: false
         },
         actions: {
             planetas: () => {
-                fetch('https://www.swapi.tech/api/planets')
+                fetch('https://swapi.dev/api/planets')
                     .then((response) => response.json())
                     .then((data) => setStore({ planetas: data.results }))
                     .catch(error => console.error('Error fetching planets:', error));
             },
 
             naves: () => {
-                fetch('https://www.swapi.tech/api/starships')
+                fetch('https://swapi.dev/api/starships')
                     .then((response) => response.json())
                     .then((data) => setStore({ naves: data.results }))
                     .catch(error => console.error('Error fetching starships:', error));
             },
 
             personajes: () => {
-                fetch('https://www.swapi.tech/api/people')
+                fetch('https://swapi.dev/api/people')
                     .then((response) => response.json())
                     .then((data) => setStore({ personajes: data.results }))
                     .catch(error => console.error('Error fetching characters:', error));
             },
 
-            toggleFavorite: (personaje) => {
+            toggleFavorite: (item) => {
                 const store = getStore();
                 const favorites = store.favorites;
-                const isFavorite = favorites.some(fav => fav.uid === personaje.uid);
+                const isFavorite = favorites.some(fav => fav.uid === item.uid);
 
                 if (isFavorite) {
-                    // Remover del favorito
-                    setStore({ favorites: favorites.filter(fav => fav.uid !== personaje.uid) });
+                    setStore({ favorites: favorites.filter(fav => fav.uid !== item.uid) });
                 } else {
-                    // Agregar a favoritos
-                    setStore({ favorites: [...favorites, personaje] });
+                    setStore({ favorites: [...favorites, item] });
                 }
             },
 

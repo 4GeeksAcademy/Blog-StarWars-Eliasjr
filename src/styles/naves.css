@@ -6,8 +6,8 @@
 }
 
 .tarjetas-scroll > .card {
-    flex: 0 0 auto; /* Evita que las tarjetas se reduzcan más allá de su tamaño natural */
-    margin-right: 10px; /* Espacio entre tarjetas */
+    flex: 0 0 auto;
+    margin-right: 10px; 
 }
 
 .tarjetas-scroll::-webkit-scrollbar {
@@ -23,4 +23,12 @@
     background-color: #555;
 }
 
+.responsive-img {
+    width: 100%;
+    height: auto;
+    max-width: 450px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
 

@@ -1,61 +1,61 @@
-/* Estilo para el Navbar */
+
 .navbar {
-    background: linear-gradient(135deg, #ffffff, #57636e); /* Gradiente oscuro para un look moderno */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra sutil para profundidad */
-    border-radius: 8px; /* Bordes redondeados */
-    padding: 0.5rem 1rem; /* Espaciado */
+    background: linear-gradient(135deg, #ffffff, #57636e); 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    border-radius: 8px; 
+    padding: 0.5rem 1rem; 
 }
 
-/* Estilo para la imagen del logo */
+
 .navbar-brand img {
     max-width: 100%;
     height: auto;
 }
 
-/* Estilo para el menú desplegable */
+
 .dropdown-button {
     display: flex;
     align-items: center;
-    color: #ffffff; /* Color del texto */
-    font-weight: bold; /* Negrita para el texto */
-    transition: color 0.3s ease, transform 0.3s ease; /* Transición suave */
-    cursor: pointer; /* Manito al pasar el ratón */
+    color: #ffffff; 
+    font-weight: bold; 
+    transition: color 0.3s ease, transform 0.3s ease;
+    cursor: pointer;
 }
 
 .dropdown-button:hover {
-    color: #f8f9fa; /* Color del texto al pasar el ratón */
+    color: #f8f9fa; 
 }
 
-/* Estilo para el menú desplegable */
+
 .dropdown-menu {
     position: absolute;
-    top: 100%; /* Posiciona el menú justo debajo del botón */
+    top: 100%; 
     left: 0;
-    background-color: #343a40; /* Fondo oscuro */
-    border: none; /* Sin borde */
-    border-radius: 8px; /* Bordes redondeados */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Sombra para profundidad */
+    background-color: #343a40; 
+    border: none; 
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
     opacity: 0;
     visibility: hidden;
     transform: scaleY(0);
     transform-origin: top;
     transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease;
-    z-index: 1000; /* Asegura que el menú esté sobre otros elementos */
+    z-index: 1000; 
 }
 
-/* Mostrar el menú desplegable con transición */
+
 .dropdown-menu.show {
     opacity: 1;
     visibility: visible;
-    transform: scaleY(1); /* Expande el menú verticalmente */
+    transform: scaleY(1); 
 }
 
-/* Estilo para los ítems del menú desplegable */
+
 .dropdown-item {
-    color: #f8f9fa; /* Color del texto */
-    transition: background-color 0.3s ease; /* Transición suave del fondo */
+    color: #f8f9fa;
+    transition: background-color 0.3s ease; 
 }
 
 .dropdown-item:hover {
-    background-color: #495057; /* Fondo al pasar el ratón */
+    background-color: #495057;
 }

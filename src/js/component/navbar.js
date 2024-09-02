@@ -1,13 +1,14 @@
 import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import { Container, Row, Col, Dropdown, DropdownButton } from 'react-bootstrap';
-import { FaChevronCircleDown, FaChevronCircleLeft } from 'react-icons/fa';
+import { FaChevronCircleDown, FaChevronCircleLeft, FaTrash } from 'react-icons/fa';
 import { Context } from "../store/appContext";
 import '../../styles/navbar.css'; // Asegúrate de tener este archivo CSS para las transiciones
 
 export const Navbar = () => {
     const { store, actions } = useContext(Context);
-    const { isDropdownOpen } = store;
+    const { isDropdownOpen, favorites } = store;
+    const favoritesCount = favorites.length; // Contador de favoritos
 
     return (
         <nav className="navbar navbar-light bg-light mb-3 shadow">
@@ -31,7 +32,7 @@ export const Navbar = () => {
                                 id="dropdown-basic-button"
                                 title={
                                     <span>
-                                        Favorites
+                                        Favorites {favoritesCount > 0 && `(${favoritesCount})`}
                                         {isDropdownOpen ? (
                                             <FaChevronCircleDown className="ms-2" />
                                         ) : (
@@ -41,9 +42,22 @@ export const Navbar = () => {
                                 }
                                 className="dropdown-button"
                             >
-                                <Dropdown.Item href="#action/1">Item 1</Dropdown.Item>
-                                <Dropdown.Item href="#action/2">Item 2</Dropdown.Item>
-                                <Dropdown.Item href="#action/3">Item 3</Dropdown.Item>
+                                {favorites.length > 0 ? (
+                                    favorites.map(fav => (
+                                        <Dropdown.Item key={fav.uid} as="div" className="d-flex justify-content-between align-items-center">
+                                            <Link to={`/${fav.type}/${fav.uid}`} className="text-decoration-none text-light">
+                                                {fav.name || 'Unnamed'}
+                                            </Link>
+                                            <FaTrash 
+                                                className="text-danger ms-2" 
+                                                style={{ cursor: 'pointer' }} 
+                                                onClick={() => actions.toggleFavorite(fav)} 
+                                            />
+                                        </Dropdown.Item>
+                                    ))
+                                ) : (
+                                    <Dropdown.Item disabled>No Favorites</Dropdown.Item>
+                                )}
                             </DropdownButton>
                         </Dropdown>
                     </Col>

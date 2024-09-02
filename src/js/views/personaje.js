@@ -15,7 +15,7 @@ export const Personaje = () => {
     useEffect(() => {
         fetch(`https://swapi.dev/api/people/${params.uid}/`)
             .then(response => response.json())
-            .then(data => setPersonaje(data))
+            .then(data => setPersonaje(data.results))
             .catch(error => console.error("Error al obtener los datos del personaje:", error));
     }, [params.uid]);
 

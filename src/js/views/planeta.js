@@ -3,7 +3,7 @@ import { Context } from "../store/appContext";
 import Table from 'react-bootstrap/Table';
 import { Link, useParams } from "react-router-dom";
 import { Container, Row, Col, Card } from 'react-bootstrap';
-import '../../styles/planeta.css'; // Asegúrate de tener este archivo CSS
+import '../../styles/planeta.css';
 
 export const Planeta = () => {
     const { store } = useContext(Context);
@@ -13,18 +13,12 @@ export const Planeta = () => {
     const headers = ["Nombre", "Clima", "Terreno", "Población", "Diámetro", "Periodo Orbital"];
     const keys = ["name", "climate", "terrain", "population", "diameter", "orbital_period"];
 
-    useEffect(() => {
-        fetch(`https://www.swapi.tech/api/planets/${params.uid}`)
-            .then((response) => response.json())
-            .then((data) => {
-                if (data && data.result && data.result.properties) {
-                    setPlaneta(data.result.properties);
-                } else {
-                    console.error("No se encontraron propiedades en los datos obtenidos:", data);
-                }
-            })
-            .catch((error) => console.error("Error al obtener los datos del planeta:", error));
-    }, [params.uid]);
+	useEffect(() => {
+		fetch(`https://www.swapi.tech/api/starships/${params.uid}`)
+			.then((response) => response.json())
+			.then((data) => setPlaneta(data.result.properties))
+			.catch((error) => console.error(error));
+	}, [params.uid]);
 
     return (
         <Container fluid>

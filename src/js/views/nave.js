@@ -43,11 +43,8 @@ export const Nave = () => {
 							</Col>
 						</Row>
 					</Card>
-
 					<hr className="my-4" />
-					
 					<h1 className="display-4 text-center mb-5">Detalles: {naves.name}</h1>
-
 					<div className="table-responsive">
 						<Table striped bordered hover>
 							<thead>
@@ -66,7 +63,6 @@ export const Nave = () => {
 							</tbody>
 						</Table>
 					</div>
-
 					<div className="text-center mt-4">
 						<Link to="/">
 							<span className="btn btn-primary btn-lg" role="button">
