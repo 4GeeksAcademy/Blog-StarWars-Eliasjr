@@ -34,7 +34,7 @@ export const Personaje = () => {
                             </Col>
                             <Col md={6}>
                                 <Card.Body>
-                                    <Card.Title className="display-4">{personaje.name}</Card.Title>
+                                    <Card.Title className="display-4 text-light">{personaje.name}</Card.Title>
                                     <Card.Text>
                                         {personaje.description || "Descripción no disponible."}
                                     </Card.Text>

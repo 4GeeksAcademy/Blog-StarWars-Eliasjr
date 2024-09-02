@@ -9,25 +9,45 @@ const getState = ({ getStore, getActions, setStore }) => {
         },
         actions: {
             planetas: () => {
-                fetch('https://www.swapi.tech/api/planets')
+                fetch('https://swapi.dev/api/planets')
                     .then((response) => response.json())
-                    .then((data) => setStore({ planetas: data.results }))
-                    .catch(error => console.error('Error fetching planets:', error));
-            },
-
-            naves: () => {
-                fetch('https://www.swapi.tech/api/starships')
-                    .then((response) => response.json())
-                    .then((data) => setStore({ naves: data.results }))
+                    .then((data) => {
+                        const planetasConUid = data.results.map(planeta => ({
+                            ...planeta, 
+                            uid: planeta.url.split('/').filter(Boolean).pop() // Extrae el uid de la URL
+                        }));
+                        setStore({ planetas: planetasConUid });
+                    })
                     .catch(error => console.error('Error fetching starships:', error));
             },
 
-            personajes: () => {
-                fetch('https://www.swapi.tech/api/people')
+            naves: () => {
+                fetch('https://swapi.dev/api/starships')
                     .then((response) => response.json())
-                    .then((data) => setStore({ personajes: data.results }))
-                    .catch(error => console.error('Error fetching characters:', error));
+                    .then((data) => {
+                        const navesConUid = data.results.map(nave => ({
+                            ...nave, 
+                            uid: nave.url.split('/').filter(Boolean).pop() // Extrae el uid de la URL
+                        }));
+                        setStore({ naves: navesConUid });
+                    })
+                    .catch(error => console.error('Error fetching starships:', error));
             },
+            
+
+            personajes: () => {
+                fetch('https://swapi.dev/api/people')
+                    .then((response) => response.json())
+                    .then((data) => {
+                        const personajesConUid = data.results.map(personaje => ({
+                            ...personaje, 
+                            uid: personaje.url.split('/').filter(Boolean).pop() // Extrae el uid de la URL
+                        }));
+                        setStore({ personajes: personajesConUid });
+                    })
+                    .catch(error => console.error('Error fetching starships:', error));
+            },
+           
 
             toggleFavorite: (item) => {
                 const store = getStore();
