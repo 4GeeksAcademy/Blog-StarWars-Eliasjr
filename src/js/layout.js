@@ -1,9 +1,10 @@
+// layout.js
 import React from "react";
 import ScrollToTop from "./component/scrollToTop";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { Home } from "./views/home";
 import { Nave } from "./views/nave";
-import { Personajes } from "./views/personajes";
+import { Personaje } from "./views/personaje";
 import { Planeta } from "./views/planeta";
 import injectContext from "./store/appContext";
 import { Navbar } from "./component/navbar";
@@ -20,7 +21,7 @@ const Layout = () => {
                     <Routes>
                         <Route path="/" element={<Home />} />
                         <Route path="/nave/:uid" element={<Nave />} />
-                        <Route path="/personaje/:uid" element={<Personajes />} />
+                        <Route path="/personaje/:uid" element={<Personaje />} />
                         <Route path="/planeta/:uid" element={<Planeta />} /> 
                         <Route path="*" element={<h1>Not found!</h1>} />
                     </Routes>

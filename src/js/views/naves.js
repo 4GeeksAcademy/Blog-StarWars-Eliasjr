@@ -12,7 +12,7 @@ export const Naves = () => {
     const { store, actions } = useContext(Context);
 
     useEffect(() => {
-        actions.naves();
+        actions.naves(); // Obtener las naves
     }, [actions]);
 
     const toggleFavorite = (nave) => {

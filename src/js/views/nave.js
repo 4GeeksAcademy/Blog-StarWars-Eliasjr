@@ -23,8 +23,7 @@ export const Nave = () => {
 		<Container fluid>
 			<Row className="justify-content-center mb-4 shado">
 				<Col xs={12} md={10} lg={8}>
-					{/* Nuevo contenedor para imagen y detalles */}
-					<Card className="mb-4">
+					<Card className="mb-4 bg-dark text-light">
 						<Row className="g-0">
 							<Col md={6}>
 								<Card.Img
@@ -43,10 +42,13 @@ export const Nave = () => {
 							</Col>
 						</Row>
 					</Card>
+
 					<hr className="my-4" />
+					
 					<h1 className="display-4 text-center mb-5">Detalles: {naves.name}</h1>
+
 					<div className="table-responsive">
-						<Table striped bordered hover>
+						<Table striped bordered hover variant="dark">
 							<thead>
 								<tr>
 									{headers.map((header, index) => (
@@ -63,6 +65,7 @@ export const Nave = () => {
 							</tbody>
 						</Table>
 					</div>
+
 					<div className="text-center mt-4">
 						<Link to="/">
 							<span className="btn btn-primary btn-lg" role="button">

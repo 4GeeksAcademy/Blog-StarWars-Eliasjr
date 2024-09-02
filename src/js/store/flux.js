@@ -4,26 +4,26 @@ const getState = ({ getStore, getActions, setStore }) => {
             naves: [],
             planetas: [],
             personajes: [],
-            favorites: [], 
-            isDropdownOpen: false
+            favorites: [], // Lista de favoritos
+            isDropdownOpen: false // Estado para controlar la apertura del dropdown
         },
         actions: {
             planetas: () => {
-                fetch('https://swapi.dev/api/planets')
+                fetch('https://www.swapi.tech/api/planets')
                     .then((response) => response.json())
                     .then((data) => setStore({ planetas: data.results }))
                     .catch(error => console.error('Error fetching planets:', error));
             },
 
             naves: () => {
-                fetch('https://swapi.dev/api/starships')
+                fetch('https://www.swapi.tech/api/starships')
                     .then((response) => response.json())
                     .then((data) => setStore({ naves: data.results }))
                     .catch(error => console.error('Error fetching starships:', error));
             },
 
             personajes: () => {
-                fetch('https://swapi.dev/api/people')
+                fetch('https://www.swapi.tech/api/people')
                     .then((response) => response.json())
                     .then((data) => setStore({ personajes: data.results }))
                     .catch(error => console.error('Error fetching characters:', error));
@@ -35,8 +35,10 @@ const getState = ({ getStore, getActions, setStore }) => {
                 const isFavorite = favorites.some(fav => fav.uid === item.uid);
 
                 if (isFavorite) {
+                    // Remover de favoritos
                     setStore({ favorites: favorites.filter(fav => fav.uid !== item.uid) });
                 } else {
+                    // Agregar a favoritos
                     setStore({ favorites: [...favorites, item] });
                 }
             },
